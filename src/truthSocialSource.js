@@ -16,6 +16,7 @@ export async function fetchPosts(config) {
   }
 
   const payload = await response.json();
+  console.info('Successfully fetched CNN feed');
   return normalizePosts(payload);
 }
 
