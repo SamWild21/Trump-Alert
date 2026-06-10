@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: truth-social-email-monitor
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    disk:
+      name: monitor-state
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: TRUTH_SOCIAL_SOURCE_URL
+        value: https://ix.cnn.io/data/truth-social/truth_archive.json
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: EMAIL_TO
+        sync: false
+      - key: POLL_INTERVAL_SECONDS
+        value: "300"
+      - key: STATE_FILE
+        value: /var/data/state.json
+      - key: SEND_INITIAL_ALERTS
+        value: "false"

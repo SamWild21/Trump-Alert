@@ -1,0 +1,26 @@
+{
+  "name": "truth-social-email-monitor",
+  "version": "1.0.0",
+  "description": "Monitor a Truth Social source for new posts and send Gmail SMTP email alerts.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test:email": "node src/sendTestEmail.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "nodemailer": "^6.10.1"
+  },
+  "keywords": [
+    "truth-social",
+    "monitor",
+    "gmail",
+    "smtp",
+    "email"
+  ],
+  "license": "MIT"
+}
