@@ -14,15 +14,22 @@ async function sendEmail(config, message) {
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
+    connectionTimeout: 30000,
+    greetingTimeout: 30000,
+    socketTimeout: 30000,
     auth: {
       user: config.gmailUser,
       pass: config.gmailAppPassword
     }
   });
 
-  return transporter.sendMail({
+  console.info('Attempting SMTP connection');
+  const result = await transporter.sendMail({
     from: config.emailFrom,
     to: config.emailTo.join(', '),
     ...message
   });
+  console.info('Email sent successfully');
+
+  return result;
 }
